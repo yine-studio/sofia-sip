@@ -2692,6 +2692,7 @@ nta_tpn_by_url(su_home_t *home,
     return -1;
   }
 
+
   SU_DEBUG_7(("nta: selecting scheme %s\n", url->url_scheme));
 
   *scheme = url->url_scheme;
