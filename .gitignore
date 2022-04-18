@@ -16,6 +16,8 @@ install-sh
 Doxyfile
 ltmain.sh
 libtool
+*.sln
+win32
 *.a
 *.la
 *.lo

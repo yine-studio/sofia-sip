@@ -2685,6 +2685,7 @@ nta_tpn_by_url(su_home_t *home,
   if (url->url_type != url_sip &&
       url->url_type != url_urn &&
       url->url_type != url_sips &&
+      url->url_type != url_tel &&
       url->url_type != url_im &&
       url->url_type != url_pres) {
     su_free(home, b);
