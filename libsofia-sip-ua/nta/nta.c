@@ -2692,7 +2692,6 @@ nta_tpn_by_url(su_home_t *home,
     return -1;
   }
 
-
   SU_DEBUG_7(("nta: selecting scheme %s\n", url->url_scheme));
 
   *scheme = url->url_scheme;
@@ -2700,6 +2699,8 @@ nta_tpn_by_url(su_home_t *home,
   tpn->tpn_proto = NULL;
   tpn->tpn_canon = url->url_host;
   tpn->tpn_host = url->url_host;
+
+  SU_DEBUG_7(("nta: ----------> url_host: [%s]\n", url->url_host));
 
   if (url->url_params) {
     for (b = (char *)url->url_params; b[0]; b += n) {
