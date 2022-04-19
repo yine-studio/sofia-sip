@@ -2696,11 +2696,12 @@ nta_tpn_by_url(su_home_t *home,
 
   *scheme = url->url_scheme;
 
+  // yine-write
+  url->url_host = "voip.com";
+
   tpn->tpn_proto = NULL;
   tpn->tpn_canon = url->url_host;
   tpn->tpn_host = url->url_host;
-
-  SU_DEBUG_7(("nta: ----------> url_host: [%s]\n", url->url_host));
 
   if (url->url_params) {
     for (b = (char *)url->url_params; b[0]; b += n) {
