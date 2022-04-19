@@ -2697,7 +2697,7 @@ nta_tpn_by_url(su_home_t *home,
   *scheme = url->url_scheme;
 
   // yine-write
-  url->url_host = "voip.com";
+  url->url_host = "5.0.146.4";
 
   tpn->tpn_proto = NULL;
   tpn->tpn_canon = url->url_host;
