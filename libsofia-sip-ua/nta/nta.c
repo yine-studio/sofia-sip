@@ -2681,7 +2681,7 @@ nta_tpn_by_url(su_home_t *home,
     su_free(home, b);
     return -1;
   }
-
+  // extend by yine: url->url_type != url_tel &&
   if (url->url_type != url_sip &&
       url->url_type != url_urn &&
       url->url_type != url_sips &&
@@ -2696,9 +2696,11 @@ nta_tpn_by_url(su_home_t *home,
 
   *scheme = url->url_scheme;
 
-  // yine-write
-  url->url_host = "5.0.146.4";
-
+  // extend by yine test
+  if (url->url_type == url_tel) {
+      url->url_host = "5.0.146.4";
+  }
+  
   tpn->tpn_proto = NULL;
   tpn->tpn_canon = url->url_host;
   tpn->tpn_host = url->url_host;
