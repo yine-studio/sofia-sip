@@ -2088,7 +2088,9 @@ nua_invite_server_init(nua_server_request_t *sr)
 
     if (sr0) {
       /* Overlapping invites - RFC 3261 14.2 */
-      return nua_server_retry_after(sr, 500, "Overlapping Requests", 0, 10);
+      //return nua_server_retry_after(sr, 500, "Overlapping Requests", 0, 10);
+	  //re-Invite早于ACK到 先直接回复491
+	  return SR_STATUS1(sr, SIP_491_REQUEST_PENDING);
     }
 
     for (cr = nh->nh_ds->ds_cr; cr; cr = cr->cr_next) {
@@ -3335,7 +3337,7 @@ static int nua_update_client_request(nua_client_request_t *cr,
    if (session_get_description(sip, NULL, NULL))
      return nua_client_return(cr, 500, "Overlapping Offer/Answer", msg);
   }
-  else if (!sip->sip_payload) {
+  else if (0/*!sip->sip_payload*/) {//允许update不带sdp
     soa_init_offer_answer(nh->nh_soa);
 
     if (soa_generate_offer(nh->nh_soa, 0, NULL) < 0 ||

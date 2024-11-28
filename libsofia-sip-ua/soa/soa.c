@@ -2097,7 +2097,7 @@ int soa_description_set(soa_session_t *ss,
   /* Store description in three forms: unparsed, parsed and reprinted */
 
   sdp_new = sdp_session_dup(ss->ss_home, sdp);
-  printer = sdp_print(ss->ss_home, sdp, NULL, 0, 0);
+  printer = sdp_print(ss->ss_home, sdp, NULL, 0, sdp_f_mode_always);//IMS 彩铃平台要求默认a=sendrecv时也带上mode
   sdp_str_new = (char *)sdp_message(printer);
   if (sdp_str)
     sdp_str0_new = su_strndup(ss->ss_home, sdp_str, str_len);
